@@ -6,7 +6,7 @@ class Person < PersonsRecord
 
   has_many :events, class_name: 'Event', foreign_key: %i[name birthdate]
 
-  validates :name, :birthdate, :gender, :details, presence: true
+  validates :name, :birthdate, :gender, :details, :phone, presence: true
   validate :birthdate_date_cannot_be_in_the_past
 
   def birthdate_date_cannot_be_in_the_past

@@ -13,12 +13,12 @@
 
   <div class="mb-3">
     <%= form.label :name, class: 'form-label'  %>
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
   </div>
 
   <div class="mb-3">
     <%= form.label :birthdate, class: 'form-label'  %>
-    <%= form.date_field :birthdate, class: 'form-control' %>
+    <%= form.date_field :birthdate, class: 'form-control', required: true %>
   </div>
 
   <div class="mb-3">
@@ -28,12 +28,12 @@
 
   <div class="mb-3">
     <%= form.label :details, class: 'form-label'  %>
-    <%= form.text_area :details, class: 'form-control' %>
+    <%= form.text_area :details, class: 'form-control', required: true %>
   </div>
 
   <div class="mb-3">
     <%= form.label :phone, class: 'form-label'  %>
-    <%= form.text_field :phone, class: 'form-control' %>
+    <%= form.text_field :phone, class: 'form-control', required: true %>
   </div>
 
   <div class="mb-3">
