@@ -1,24 +1,56 @@
 # Reactive Dashboard (Multi database setup)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The application consists with multiple databases, composite primary keys and
+reactive UI interface that would be update when a database change occur in relation
+to page that user currently viewing.
 
 Things you may want to cover:
 
-* Ruby version
+## Ruby/Rails version
 
-* System dependencies
+- Ruby 3.0.1
+- Rails 7.0.3
+- Git
 
-* Configuration
+## Configuration
 
-* Database creation
+Change the `database.yml` according to your local configurations. TO work with multiple
+databases keep the those configuration intact.
 
-* Database initialization
+## Database creation
 
-* How to run the test suite
+Run the following commands to create and setup the database.
 
-* Services (job queues, cache servers, search engines, etc.)
+    bundle exec rake db:create
+    bundle exec rake db:setup`
 
-* Deployment instructions
+## Start the server
 
-* ...
+Start the local server by one of following commands.
+
+    bin/dev
+
+This will start the server in the port 3000 and you can visit the site with: http://localhost:3000/
+
+## Questions
+
+> 1. If you had more time, what would you change or focus more time on ?
+>       
+>> Would have more focused on the UIs more that refine the interfaces and do more testing
+>> functionality of UI updates on database changes more. Also would have able to add more 
+>> validations to form and other user inputs. Would have research more into websocket capabilities
+>> that can be integrated to rails. I have developed this application using "Postgresql" because
+>> it is already setup in my machine. With more time I could have tried with "Mysql" database.
+> 
+> 2. Which part of the solution consumed the most amount of time?
+>
+>> Most time consuming part was when setting up "Actioncable" with multiple javascript libaraies and
+>> Subsequently implementing the websocket functions thought the application because it was somewhat
+>> unorthodox.
+> 
+> 3. What would you suggest to the clinicians that they may not have thought of in regard to their request ?
+> 
+>> Using "name", "bithdate" as a unique composite primary key was a not a good approach and the clinicians 
+>> should have thought about different version of name can exists such a middle name can be shortened or there 
+>> could be multiple spellings of a name that pronounce the same. If possible and having a single database would be
+>> more efficient too. 
