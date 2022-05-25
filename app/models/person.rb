@@ -25,6 +25,10 @@ class Person < PersonsRecord
       selector: "#person_card_#{self.uuid}",
       html: ApplicationController.render(partial: 'people/person_card', locals: {person: self })
     )
+    cable_ready["dashboard"].morph(
+      selector: "#person_show_#{self.uuid}",
+      html: ApplicationController.render(partial: 'people/person', locals: {person: self })
+    )
     cable_ready.broadcast
   end
 

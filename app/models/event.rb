@@ -25,6 +25,10 @@ class Event < EventsRecord
       selector: "#event_card_#{self.uuid}",
       html: ApplicationController.render(partial: 'events/event_card', locals: {event: self })
     )
+    cable_ready["dashboard"].morph(
+      selector: "#event_show_#{self.uuid}",
+      html: ApplicationController.render(partial: 'events/event', locals: {event: self })
+    )
     if self.person.present?
       cable_ready["dashboard"].morph(
         selector: "#event_card_#{self.uuid}_with_person_#{self.person.uuid}",

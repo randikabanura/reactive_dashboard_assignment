@@ -3,5 +3,5 @@
   <td><%= person.birthdate %></td>
   <td><%= person.gender %></td>
   <td><%= person.phone %></td>
-  <td><%= link_to "Show this person", person %></td>
+  <td><%= link_to "Show this person", person %> | <%= link_to "Edit this person", edit_person_path(person) %></td>
 </tr>
