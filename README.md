@@ -51,3 +51,14 @@ This will start the server in the port 3000 and you can visit the site with: htt
 >> should have thought about different version of name can exists such a middle name can be shortened or there 
 >> could be multiple spellings of a name that pronounce the same. If possible and having a single database would be
 >> more efficient too. 
+
+## License
+
+Reactive Dashboard (Multi database setup) is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Developer
+
+Name: [Banura Randika Perera](https://github.com/randikabanura) <br/>
+Linkedin: [randika-banura](https://www.linkedin.com/in/randika-banura/) <br/>
+Email: [randika.banura@gamil.com](mailto:randika.banura@gamil.com) <br/>
+Bsc (Hons) Information Technology specialized in Software Engineering (SLIIT) <br/>
