@@ -41,8 +41,8 @@ This will start the server in the port 3000 and you can visit the site with: htt
 > 
 > 2. Which part of the solution consumed the most amount of time?
 >
->> Most time consuming part was when setting up "Actioncable" with multiple javascript libaraies and
->> Subsequently implementing the websocket functions thought the application because it was somewhat
+>> Most time consuming part was when setting up "Actioncable" with multiple javascript libraries and
+>> Subsequently implementing the websocket functions throughout the application because it was somewhat
 >> unorthodox.
 > 
 > 3. What would you suggest to the clinicians that they may not have thought of in regard to their request ?
