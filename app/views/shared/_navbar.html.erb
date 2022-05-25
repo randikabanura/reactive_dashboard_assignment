@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container mx-auto">
+    <%= link_to Rails.application.class.module_parent.name, root_path, class: "navbar-brand" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav me-auto mt-2 mt-md-0">
+      </ul>
+
+      <ul class="navbar-nav">
+        <% if doctor_signed_in? %>
+
+          <li class="nav-item">
+            <%= link_to "People", people_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Events", events_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item dropdown">
+            <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", bs_toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
+              <%#= image_tag avatar_path(current_user, size: 40), height: 20, width: 20, class: "rounded" %>
+            <% end %>
+            <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar-dropdown">
+              <%= link_to "Settings", edit_doctor_registration_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= button_to "Logout", destroy_doctor_session_path, method: :delete, data: { turbo: false }, class: "dropdown-item" %>
+            </div>
+          </li>
+
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign Up", new_doctor_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Login", new_doctor_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
