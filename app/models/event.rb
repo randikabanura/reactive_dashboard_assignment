@@ -1,7 +1,7 @@
 class Event < EventsRecord
   include CableReady::Broadcaster
 
-  self.primary_keys = %i[name birthdate]
+  self.primary_keys = %i[name birthdate uuid]
   enum event_type: [:urgent, :normal, :minor]
 
   belongs_to :person, foreign_key: %i[name birthdate], optional: true
