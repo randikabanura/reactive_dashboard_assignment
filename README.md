@@ -10,7 +10,6 @@ Things you may want to cover:
 
 - Ruby 3.0.1
 - Rails 7.0.3
-- Git
 
 ## Configuration
 
