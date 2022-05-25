@@ -78,3 +78,5 @@ end
 
 gem 'devise'
 gem 'composite_primary_keys', '=14.0.3'
+gem "cable_ready", "~> 5.0.0.pre9 "
+gem "stimulus_reflex", "~> 3.5.0.pre9 "

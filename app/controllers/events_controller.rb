@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include CableReady::Broadcaster
+
   before_action :set_event, only: %i[ show edit update destroy ]
 
   # GET /events or /events.json
@@ -25,6 +27,12 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        cable_ready["dashboard"].insert_adjacent_html(
+          selector: "#event_table_body",
+          position: "afterbegin",
+          html: render_to_string(partial: 'table_row', locals: {event: @event})
+        )
+        cable_ready.broadcast
         format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
