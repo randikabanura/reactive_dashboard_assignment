@@ -12,3 +12,10 @@
 <div>
   <%= button_to "Destroy this person", @person, method: :delete, class: 'btn btn-primary' %>
 </div>
+
+<div class="container">
+  <h2>Events Related to this person</h2>
+  <% @events.each do |event| %>
+    <%= render 'event_card', event: event %>
+  <% end %>
+</div>

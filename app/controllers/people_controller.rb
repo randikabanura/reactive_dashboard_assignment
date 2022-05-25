@@ -3,11 +3,13 @@ class PeopleController < ApplicationController
 
   # GET /people or /people.json
   def index
-    @people = Person.all
+    @people = Person.all.order(created_at: :desc)
+    @events = Event.order(created_at: :desc).last(5)
   end
 
   # GET /people/1 or /people/1.json
   def show
+    @events = @person.events if @person.present?
   end
 
   # GET /people/new

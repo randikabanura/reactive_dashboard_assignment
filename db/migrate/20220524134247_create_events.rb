@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
     create_table :events, id: false, primary_key: %i[name birthdate] do |t|
       t.string :name
       t.date :birthdate
+      t.string :title
       t.text :description
       t.integer :event_type
 

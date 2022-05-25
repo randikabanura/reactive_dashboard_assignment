@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_134247) do
   create_table "events", id: false, force: :cascade do |t|
     t.string "name"
     t.date "birthdate"
+    t.string "title"
     t.text "description"
     t.integer "event_type"
     t.datetime "created_at", null: false

@@ -19,20 +19,14 @@
       <tr>
         <th>Name</th>
         <th>Birthdate</th>
-        <th>Description</th>
+        <th>Title</th>
         <th>Event Type</th>
         <th></th>
       </tr>
       </thead>
-      <tbody>
+      <tbody id="event_table_body">
       <% @events.each do |event| %>
-        <tr>
-          <td><%= event.name %></td>
-          <td><%= event.birthdate %></td>
-          <td><%= event.description %></td>
-          <td><%= event.event_type %></td>
-          <td><%= link_to "Show this event", event %></td>
-        </tr>
+       <%= render 'table_row', event: event %>
       <% end %>
       </tbody>
     </table>
