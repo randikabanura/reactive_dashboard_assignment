@@ -16,26 +16,40 @@ class Event < EventsRecord
   end
 
   after_update do
+    self.reload
     cable_ready["dashboard"].morph(
-      selector: "##{self.uuid}",
+      selector: "#event_#{self.uuid}",
       html: ApplicationController.render(partial: 'events/table_row', locals: {event: self })
+    )
+    cable_ready["dashboard"].morph(
+      selector: "#event_card_#{self.uuid}",
+      html: ApplicationController.render(partial: 'events/event_card', locals: {event: self })
     )
     cable_ready.broadcast
   end
 
   after_create do
+    self.reload
     cable_ready["dashboard"].insert_adjacent_html(
       selector: "#events_dashboard_tbody",
       position: "afterbegin",
       html: ApplicationController.render(partial: 'events/table_row', locals: {event: self })
+    )
+    cable_ready["dashboard"].insert_adjacent_html(
+      selector: "#events_card_container",
+      position: "afterbegin",
+      html: ApplicationController.render(partial: 'events/event_card', locals: {event: self })
     )
     cable_ready.broadcast
   end
 
   after_destroy do
     cable_ready["dashboard"].remove(
-      selector: "##{self.uuid}",
+      selector: "#event_#{self.uuid}",
     )
+    cable_ready["dashboard"].remove(
+      selector: "#event_card_#{self.uuid}",
+      )
     cable_ready.broadcast
   end
 end

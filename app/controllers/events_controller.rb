@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order(created_at: :desc)
+    @people = Person.order(created_at: :desc).last(5)
   end
 
   # GET /events/1 or /events/1.json
@@ -63,6 +64,8 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    rescue
+      redirect_to root_path
     end
 
     # Only allow a list of trusted parameters through.

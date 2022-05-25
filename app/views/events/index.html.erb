@@ -12,7 +12,6 @@
   </div>
 </div>
 
-<% if @events.any? %>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
       <thead>
@@ -31,6 +30,12 @@
       </tbody>
     </table>
   </div>
-<% else %>
-  <div class="text-center">No events are available</div>
-<% end %>
+
+<div class="container">
+  <h2>Last Created People</h2>
+  <div id="people_card_container">
+    <% @people.each do |person| %>
+      <%= render 'people/person_card', person: person %>
+    <% end %>
+  </div>
+</div>

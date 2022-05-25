@@ -12,32 +12,31 @@
   </div>
 </div>
 
-<% if @people.any? %>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Birthdate</th>
-        <th>Gender</th>
-        <th>Phone</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @people.each do |person| %>
-        <%= render 'table_row', person: person %>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <div class="text-center">No person is available</div>
-<% end %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birthdate</th>
+      <th>Gender</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @people.each do |person| %>
+      <%= render 'table_row', person: person %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <div class="container">
   <h2>Last Created Events</h2>
-  <% @events.each do |event| %>
-    <%= render 'event_card', event: event %>
-  <% end %>
+  <div id="events_card_container">
+    <% @events.each do |event| %>
+      <%= render 'events/event_card', event: event %>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,14 @@
+<div class="card text-center" id="person_card_<%= person.uuid %>">
+  <div class="card-header">
+    <%= person.gender.capitalize %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= person.name %></h5>
+    <p class="card-text"><%= person.details %></p>
+    <%= link_to "Show this person", person, class: "btn btn-primary" %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= person.created_at.strftime("%B %d, %Y") %>
+  </div>
+</div>
+<br>

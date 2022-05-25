@@ -16,25 +16,39 @@ class Person < PersonsRecord
   end
 
   after_update do
+    self.reload
     cable_ready["dashboard"].morph(
-      selector: "##{self.uuid}",
+      selector: "#person_#{self.uuid}",
       html: ApplicationController.render(partial: 'people/table_row', locals: {person: self })
+    )
+    cable_ready["dashboard"].morph(
+      selector: "#person_card_#{self.uuid}",
+      html: ApplicationController.render(partial: 'people/person_card', locals: {person: self })
     )
     cable_ready.broadcast
   end
 
   after_create do
+    self.reload
     cable_ready["dashboard"].insert_adjacent_html(
       selector: "#people_dashboard_tbody",
       position: "afterbegin",
       html: ApplicationController.render(partial: 'people/table_row', locals: {person: self })
+    )
+    cable_ready["dashboard"].insert_adjacent_html(
+      selector: "#people_card_container",
+      position: "afterbegin",
+      html: ApplicationController.render(partial: 'people/person_card', locals: {person: self })
     )
     cable_ready.broadcast
   end
 
   after_destroy do
     cable_ready["dashboard"].remove(
-      selector: "##{self.uuid}",
+      selector: "#person_#{self.uuid}",
+      )
+    cable_ready["dashboard"].remove(
+      selector: "#person_card_#{self.uuid}",
       )
     cable_ready.broadcast
   end

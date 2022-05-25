@@ -1,4 +1,4 @@
-<div class="card text-center">
+<div class="card text-center" id="event_card_<%= event.uuid %>">
   <div class="card-header">
     <%= event.event_type.capitalize %>
   </div>
@@ -11,3 +11,4 @@
     <%= event.created_at.strftime("%B %d, %Y") %>
   </div>
 </div>
+<br>
