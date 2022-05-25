@@ -1,4 +1,4 @@
-# Reactive Dashboard Assignment (Multi database setup)
+# Reactive Dashboard (Multi database setup)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
