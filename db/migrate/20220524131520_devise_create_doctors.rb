@@ -2,6 +2,7 @@
 
 class DeviseCreateDoctors < ActiveRecord::Migration[7.0]
   def change
+    enable_extension 'uuid-ossp'
     create_table :doctors do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""

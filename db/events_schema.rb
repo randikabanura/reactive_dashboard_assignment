@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_05_24_134247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "doctors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_134247) do
   end
 
   create_table "events", id: false, force: :cascade do |t|
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }
     t.string "name"
     t.date "birthdate"
     t.string "title"
@@ -34,10 +36,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_134247) do
     t.integer "event_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name", "birthdate"], name: "index_events_on_name_and_birthdate", unique: true
+    t.index ["name", "birthdate"], name: "index_events_on_name_and_birthdate"
   end
 
   create_table "people", id: false, force: :cascade do |t|
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }
     t.string "name"
     t.date "birthdate"
     t.integer "gender"

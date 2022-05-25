@@ -1,4 +1,6 @@
 class Event < EventsRecord
+  include CableReady::Broadcaster
+
   self.primary_keys = %i[name birthdate]
   enum event_type: [:urgent, :normal, :minor]
 
@@ -11,5 +13,29 @@ class Event < EventsRecord
     if birthdate.present? && birthdate > Date.today
       errors.add(:birthdate, "can't be in the future")
     end
+  end
+
+  after_update do
+    cable_ready["dashboard"].morph(
+      selector: "##{self.uuid}",
+      html: ApplicationController.render(partial: 'events/table_row', locals: {event: self })
+    )
+    cable_ready.broadcast
+  end
+
+  after_create do
+    cable_ready["dashboard"].insert_adjacent_html(
+      selector: "#events_dashboard_tbody",
+      position: "afterbegin",
+      html: ApplicationController.render(partial: 'events/table_row', locals: {event: self })
+    )
+    cable_ready.broadcast
+  end
+
+  after_destroy do
+    cable_ready["dashboard"].remove(
+      selector: "##{self.uuid}",
+    )
+    cable_ready.broadcast
   end
 end

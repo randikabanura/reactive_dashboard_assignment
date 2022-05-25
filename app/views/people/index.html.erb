@@ -26,13 +26,7 @@
       </thead>
       <tbody>
       <% @people.each do |person| %>
-        <tr>
-          <td><%= person.name %></td>
-          <td><%= person.birthdate %></td>
-          <td><%= person.gender %></td>
-          <td><%= person.phone %></td>
-          <td><%= link_to "Show this person", person %></td>
-        </tr>
+        <%= render 'table_row', person: person %>
       <% end %>
       </tbody>
     </table>
