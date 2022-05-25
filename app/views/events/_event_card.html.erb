@@ -1,4 +1,8 @@
-<div class="card text-center" id="event_card_<%= event.uuid %>">
+<% if defined?(person) && person.present?%>
+  <div class="card text-center" id="event_card_<%= event.uuid %>_with_person_<%= person.uuid %>">
+<% else %>
+  <div class="card text-center" id="event_card_<%= event.uuid %>">
+<% end %>
   <div class="card-header">
     <%= event.event_type.capitalize %>
   </div>

@@ -25,6 +25,12 @@ class Event < EventsRecord
       selector: "#event_card_#{self.uuid}",
       html: ApplicationController.render(partial: 'events/event_card', locals: {event: self })
     )
+    if self.person.present?
+      cable_ready["dashboard"].morph(
+        selector: "#event_card_#{self.uuid}_with_person_#{self.person.uuid}",
+        html: ApplicationController.render(partial: 'events/event_card', locals: { event: self, person: self.person })
+      )
+    end
     cable_ready.broadcast
   end
 
@@ -40,6 +46,13 @@ class Event < EventsRecord
       position: "afterbegin",
       html: ApplicationController.render(partial: 'events/event_card', locals: {event: self })
     )
+    if self.person.present?
+      cable_ready["dashboard"].insert_adjacent_html(
+        selector: "#events_related_to_person_#{self.person.uuid}",
+        position: "afterbegin",
+        html: ApplicationController.render(partial: 'events/event_card', locals: { event: self, person: self.person })
+      )
+    end
     cable_ready.broadcast
   end
 
@@ -49,6 +62,9 @@ class Event < EventsRecord
     )
     cable_ready["dashboard"].remove(
       selector: "#event_card_#{self.uuid}",
+      )
+    cable_ready["dashboard"].remove(
+      selector: "#event_card_#{self.uuid}_with_person_#{self.person.uuid}",
       )
     cable_ready.broadcast
   end

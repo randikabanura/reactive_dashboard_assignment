@@ -7,15 +7,23 @@
   <%= link_to "Back to people", people_path %>
 </div>
 
-  <br>
+<br>
 
 <div>
   <%= button_to "Destroy this person", @person, method: :delete, class: 'btn btn-primary' %>
 </div>
 
+<br>
+
 <div class="container">
   <h2>Events Related to this person</h2>
-  <% @events.each do |event| %>
-    <%= render 'event_card', event: event %>
+  <% if @events.present? %>
+    <div id="events_related_to_person_<%= @person.uuid %>">
+      <% @events.each do |event| %>
+        <%= render 'events/event_card', event: event, person: @person %>
+      <% end %>
+    </div>
+  <% else %>
+    <div id="events_related_to_person_<%= @person.uuid %>"></div>
   <% end %>
 </div>

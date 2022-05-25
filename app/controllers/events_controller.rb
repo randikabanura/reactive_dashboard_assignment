@@ -39,8 +39,24 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    person = @event.person
     respond_to do |format|
       if @event.update(event_params)
+        new_person = @event.person
+        if person.present? && person != new_person
+          cable_ready["dashboard"].remove(
+            selector: "#event_card_#{@event.uuid}_with_person_#{person.uuid}",
+            )
+          cable_ready.broadcast
+        end
+        if new_person.present? && new_person != person
+          cable_ready["dashboard"].insert_adjacent_html(
+            selector: "#events_related_to_person_#{new_person.uuid}",
+            position: "afterbegin",
+            html: ApplicationController.render(partial: 'events/event_card', locals: { event: @event, person: new_person })
+          )
+          cable_ready.broadcast
+        end
         format.html { redirect_to event_url(@event), notice: "Event was successfully updated." }
         format.json { render :show, status: :ok, location: @event }
       else
