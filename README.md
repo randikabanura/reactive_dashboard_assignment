@@ -4,8 +4,6 @@ The application consists with multiple databases, composite primary keys and
 reactive UI interface that would be update when a database change occur in relation
 to page that user currently viewing.
 
-Things you may want to cover:
-
 ## Ruby/Rails version
 
 - Ruby 3.0.1
