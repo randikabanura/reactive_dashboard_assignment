@@ -47,7 +47,7 @@ This will start the server in the port 3000 and you can visit the site with: htt
 > 
 > 3. What would you suggest to the clinicians that they may not have thought of in regard to their request ?
 > 
->> Using "name", "bithdate" as a unique composite primary key was a not a good approach and the clinicians 
+>> Using "name", "birthdate" as a unique composite primary key was a not a good approach and the clinicians 
 >> should have thought about different version of name can exists such a middle name can be shortened or there 
 >> could be multiple spellings of a name that pronounce the same. If possible and having a single database would be
 >> more efficient too. 
