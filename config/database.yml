@@ -89,7 +89,19 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: reactive_dashboard_assignment_production
-  username: reactive_dashboard_assignment
-  password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+  primary:
+    <<: *default
+    username: reactive_dashboard_assignment
+    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    database: reactive_dashboard_assignment_production
+  persons:
+    <<: *default
+    username: reactive_dashboard_assignment
+    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    database: reactive_dashboard_assignment_production_persons
+  events:
+    <<: *default
+    username: reactive_dashboard_assignment
+    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    database: reactive_dashboard_assignment_production_events
+
