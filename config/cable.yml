@@ -7,6 +7,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://redis-15037.c11.us-east-1-2.ec2.cloud.redislabs.com:15037/
+  url: <%= ENV["REDIS_PRODUCTION_URL"] %>
   channel_prefix: reactive_dashboard_assignment_production
   password: <%= ENV["REDIS_PRODUCTION_PASSWORD"] %>
