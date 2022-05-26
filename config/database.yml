@@ -95,9 +95,9 @@ production:
   persons:
     adapter: postgresql
     database: reactive_dashboard_assignment_production_persons
-    url: <%= ENV["HEROKU_POSTGRESQL_PURPLE"] %>
+    url: <%= ENV["HEROKU_POSTGRESQL_PURPLE_URL"] %>
   events:
     adapter: postgresql
     database: reactive_dashboard_assignment_production_events
-    url: <%= ENV["HEROKU_POSTGRESQL_ONYX"] %>
+    url: <%= ENV["HEROKU_POSTGRESQL_ONYX_URL"] %>
 
