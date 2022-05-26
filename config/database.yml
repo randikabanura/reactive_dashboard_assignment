@@ -91,17 +91,17 @@ test:
 production:
   primary:
     adapter: postgresql
-    host: localhost
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
     password:
     database: reactive_dashboard_assignment_production
   persons:
     adapter: postgresql
-    host: localhost
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
     password:
     database: reactive_dashboard_assignment_production_persons
   events:
     adapter: postgresql
-    host: localhost
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
     password:
     database: reactive_dashboard_assignment_production_events
 
