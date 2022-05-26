@@ -99,9 +99,11 @@ production:
     username: reactive_dashboard_assignment
     password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
     database: reactive_dashboard_assignment_production_persons
+    url: <%= ENV["HEROKU_POSTGRESQL_PURPLE"] %>
   events:
     <<: *default
     username: reactive_dashboard_assignment
     password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
     database: reactive_dashboard_assignment_production_events
+    url: <%= ENV["HEROKU_POSTGRESQL_ONYX"] %>
 
