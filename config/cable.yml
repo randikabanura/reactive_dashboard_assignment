@@ -9,4 +9,4 @@ production:
   adapter: redis
   url: redis://redis-15037.c11.us-east-1-2.ec2.cloud.redislabs.com:15037/
   channel_prefix: reactive_dashboard_assignment_production
-  password: x9TXLWp3eqUsX9Br12J26kSkR3vu4iHO
+  password: <%= ENV["REDIS_PRODUCTION_PASSWORD"] %>
