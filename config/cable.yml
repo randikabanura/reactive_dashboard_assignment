@@ -7,5 +7,5 @@ test:
 
 production:
   adapter: redis
-  url: redis-15037.c11.us-east-1-2.ec2.cloud.redislabs.com:15037
+  url: redis://default:x9TXLWp3eqUsX9Br12J26kSkR3vu4iHO@redis-15037.c11.us-east-1-2.ec2.cloud.redislabs.com:15037/1
   channel_prefix: reactive_dashboard_assignment_production
