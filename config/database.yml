@@ -90,15 +90,18 @@ test:
 #
 production:
   primary:
-    <<: *default
-    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    adapter: postgresql
+    host: localhost
+    password:
     database: reactive_dashboard_assignment_production
   persons:
-    <<: *default
-    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    adapter: postgresql
+    host: localhost
+    password:
     database: reactive_dashboard_assignment_production_persons
   events:
-    <<: *default
-    password: <%= ENV["REACTIVE_DASHBOARD_ASSIGNMENT_DATABASE_PASSWORD"] %>
+    adapter: postgresql
+    host: localhost
+    password:
     database: reactive_dashboard_assignment_production_events
 
