@@ -11,7 +11,7 @@ to page that user currently viewing.
 
 ## Configuration
 
-Change the `database.yml` according to your local configurations. TO work with multiple
+Change the `database.yml` according to your local configurations. To work with multiple
 databases keep the those configuration intact.
 
 ## Database creation
