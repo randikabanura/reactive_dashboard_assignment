@@ -2,7 +2,9 @@
 
 The application consists with multiple databases, composite primary keys and
 reactive UI interface that would be update when a database change occur in relation
-to page that user currently viewing.
+to page that user currently viewing. 
+
+You can checkout the [Live Demo from here](https://mighty-gorge-08348.herokuapp.com/).
 
 ## Ruby/Rails version
 
