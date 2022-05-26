@@ -23,7 +23,7 @@ Run the following commands to create and setup the database.
 
 ## Start the server
 
-Start the local server by one of following commands.
+Start the local server by the following command.
 
     bin/dev
 
